@@ -7,16 +7,27 @@ BEGIN{
 }
 
 FNR==NR{
- if(FNR==1 && (C1 !~ /^[0-9]+$/)){
-  for(i=1;i<=NF;i++){
-    if(trim(tolower($i))==trim(tolower(C1))){
-     C1=i
-     break
-    }
-  }
-  if(i>NF){
-   print "No matching column found for "C1". Program will exit now..."
-   exit 1
+ if(FNR==1){
+  if(C1 !~ /^[0-9]+$/ || C3 !~ /^[0-9]+$/){
+   for(i=1;i<=NF;i++){
+     if(trim(tolower($i))==trim(tolower(C1))){
+      C1=i
+      if(C3 ~ /^[0-9]+$/)
+       break
+     }
+     else if(trim(tolower($i))==trim(tolower(C3))){
+      C3=i
+      if(C1 ~ /^[0-9]+$/)
+       break
+     }
+   }
+   if(i>NF){
+    if(C1 !~ /^[0-9]+$/)
+     print "No matching column found for "C1". Program will exit now..."
+    if(C3 !~ /^[0-9]+$/)
+     print "No matching column found for "C3". Program will exit now..."
+    exit 1
+   }
   }
  }
  if($C1 in a){
