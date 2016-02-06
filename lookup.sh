@@ -18,3 +18,6 @@ awk -v C1="$3" -v C2="$4" -v C3="$5" -v C4="$6" -v C5="$7" -v C6="$8" -f vlookup
 rm $1"_op" $2"_op"
 wc -l $6
 wc -l $7
+# Now we replace the special character sequence we replaced commas with in processcsv.sh so that awk may process the files without issues.
+sed -i 's/@@@@@/,/g' $6
+sed -i 's/@@@@@/,/g' $7
