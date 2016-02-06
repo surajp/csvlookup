@@ -4,9 +4,9 @@ if [ $# -ne 8 ]
 then
 	echo "arg1 = lookup file"
 	echo "arg2 = data file"
-	echo "arg3 = column number of lookup data in lookup file"
-	echo "arg4 = column number of lookup data in data file"
-	echo "arg5 = column number of data to fetch from lookup file"
+	echo "arg3 = column name or number of lookup data in lookup file"
+	echo "arg4 = column name or number of lookup data in data file"
+	echo "arg5 = column name or number of data to fetch from lookup file"
 	echo "arg6 = file name of output file with matches found"
 	echo "arg7 = file name of output file wiih no matches"
 	echo "arg8 = name of new column in the output file"
